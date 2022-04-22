@@ -1,7 +1,14 @@
 <template>
-  <div id="app">
+
+  <div class="bg-custom-black">
     
-      <form action="" class="">
+    <div class="container-default-2 flexBetween">
+
+        <div class="">
+          <h2 class="text_uppercase  text_red fs_8">boolflix</h2> 
+      </div>
+
+      <form action="" class="p_10">
            <input type="text" class="form-control" 
                   v-model.trim="searchText"> 
            <button type="submit" 
@@ -9,9 +16,12 @@
                    @click.prevent="$emit( 'search', searchText )"
                    v-on:keyup.enter="submit"
                    >
-                   Search
+                   Search film...
             </button>
        </form>
+
+    </div>
+      
 
   </div>
 </template>

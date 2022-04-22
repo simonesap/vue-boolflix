@@ -6,7 +6,8 @@
     />
     
     <MainComp
-      :libraryCall="libraryMovies"
+      :libraryCallMovies="libraryMovies"
+      :libraryCallSeries="librarySeries"
     />
 
   </div>
@@ -30,6 +31,7 @@ export default {
      
       api_key: '72f00d1d6ae3b6f495d244fb43ac83ce&query',
       libraryMovies: [],
+      librarySeries: [],
     }
   },
 
@@ -44,9 +46,15 @@ export default {
   methods: {
 
     searching( element ) {
-      this.callApiMovies( element ) 
+      if( element.includes(this.callApiMovies( element ))) {
+        
+        return this.callApiMovies( element )
       
-      return
+      } return this.callApiSeries( element )
+      // this.callApiMovies( element ) 
+      // this.callApiSeries( element )
+      
+      // return
     },
 
     callApiMovies( element ) {
@@ -55,6 +63,18 @@ export default {
         console.log(res);
         this.libraryMovies = res.data.results;
         console.log(this.libraryMovies)
+      })
+      .catch( (error) => {
+          console.log( error )
+      })
+    },
+
+    callApiSeries( element ) {
+      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.api_key}72f00d1d6ae3b6f495d244fb43ac83ce&query=${element}&region=it-IT`)
+      .then( (res) => {
+        console.log(res);
+        this.librarySeries = res.data.results;
+        console.log(this.librarySeries)
       })
       .catch( (error) => {
           console.log( error )
@@ -68,5 +88,9 @@ export default {
 <style lang="scss">
 @import './assets/style/general.scss';
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed&display=swap');
+
+  body {
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+  }
 
 </style>

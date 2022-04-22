@@ -1,15 +1,29 @@
 <template>
 
-  <div>
-    
+  <div class="container-default flexRowWrap">
+   
     <div
+        class="p-20 flexColWrap fs_2 text_uppercase"
         v-for="(element, index) in filmCard"
         :key="index"
-    >
-        <span>{{element.title}}</span>
-        <span>{{element.original_title}}</span>
-        <span>{{element.original_language}}</span>
-        <span>{{element.vote_average}}</span>
+    >   
+        <!-- <h2>Film</h2> -->
+        <div class="p_10"><span>Titolo: </span>{{element.title}}</div>
+        <div class="p_10"><span>Titolo originale: </span>{{element.original_title}}</div>
+        <div class="p_10"><span>Lingua originale: </span>{{element.original_language}}</div>
+        <div class="p_10"><span>Media dei voti: </span>{{element.vote_average}}</div>
+    </div>
+
+    <div
+        class="p-20 flexColWrap fs_2 text_uppercase"
+        v-for="(element, index) in seriesCard"
+        :key="index"
+    >   
+        <!-- <h2>Series</h2> -->
+        <div class="p_10"><span>Titolo: </span>{{element.title}}</div>
+        <div class="p_10"><span>Titolo originale: </span>{{element.original_title}}</div>
+        <div class="p_10"><span>Lingua originale: </span>{{element.original_language}}</div>
+        <div class="p_10"><span>Media dei voti: </span>{{element.vote_average}}</div>
     </div>
  
 
@@ -30,6 +44,7 @@ export default {
 
   props: {
       filmCard: Object,
+      seriesCard: Object,
   },
 
   data() {
@@ -40,7 +55,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../../assets/style/general.scss';
+
+    span {
+        color: red;
+    }
 
 </style>

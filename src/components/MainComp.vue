@@ -2,10 +2,12 @@
   <div>
 
       <FilmsList
-        :filmCall="libraryCall"
+        :filmCall="libraryCallMovies"
       />
 
-      <SeriesList/>
+      <SeriesList
+        :seriesCall="libraryCallSeries"
+      />
 
   </div>
 </template>
@@ -24,7 +26,7 @@ export default {
   },
 
     props: {
-        libraryCall: Object,
+        libraryCallMovies: Object,
     }
 
 }
@@ -32,5 +34,9 @@ export default {
 
 <style lang="scss">
 @import '../assets/style/general.scss';
+
+    body {
+        background: $gray-medium;
+    }
 
 </style>
