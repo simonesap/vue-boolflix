@@ -2,6 +2,15 @@
 
   <div>
     
+    <div
+        v-for="(element, index) in filmCard"
+        :key="index"
+    >
+        <span>{{element.title}}</span>
+        <span>{{element.original_title}}</span>
+        <span>{{element.original_language}}</span>
+        <span>{{element.vote_average}}</span>
+    </div>
  
 
   </div>
@@ -17,6 +26,10 @@ export default {
 
   components: {
   
+  },
+
+  props: {
+      filmCard: Object,
   },
 
   data() {

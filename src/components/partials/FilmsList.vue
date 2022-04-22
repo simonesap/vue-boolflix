@@ -2,7 +2,9 @@
 
   <div>
     
-    <CardsComp/>
+    <CardsComp
+        :filmCard="filmCall"
+    />
 
   </div>
 
@@ -17,6 +19,10 @@ export default {
 
   components: {
     CardsComp,
+  },
+
+  props: {
+      filmCall: Object,
   },
 
   data() {

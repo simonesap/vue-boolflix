@@ -1,7 +1,9 @@
 <template>
   <div>
 
-      <FilmsList/>
+      <FilmsList
+        :filmCall="libraryCall"
+      />
 
       <SeriesList/>
 
@@ -15,10 +17,16 @@ import SeriesList from './partials/SeriesList.vue'
 
 export default {
   name: 'MainComp',
+
   components: {
       FilmsList,
       SeriesList,
-  }
+  },
+
+    props: {
+        libraryCall: Object,
+    }
+
 }
 </script>
 

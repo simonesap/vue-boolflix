@@ -6,7 +6,9 @@
                   v-model.trim="searchText"> 
            <button type="submit" 
                    class="btn btn-primary"
-                   @click.prevent="$emit( 'search', searchText )">
+                   @click.prevent="$emit( 'search', searchText )"
+                   v-on:keyup.enter="submit"
+                   >
                    Search
             </button>
        </form>
