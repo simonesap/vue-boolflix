@@ -22,7 +22,7 @@ export default {
   },
 
   props: {
-      filmCall: Object,
+      filmCall: Array,
   },
 
   data() {

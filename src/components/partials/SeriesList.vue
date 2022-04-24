@@ -22,7 +22,7 @@ export default {
   },
 
   props: {
-      seriesCall: Object,
+      seriesCall: Array,
   },
 
   data() {

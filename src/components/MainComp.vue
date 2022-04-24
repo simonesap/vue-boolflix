@@ -26,7 +26,8 @@ export default {
   },
 
     props: {
-        libraryCallMovies: Object,
+        libraryCallMovies: Array,
+        libraryCallSeries: Array,
     }
 
 }

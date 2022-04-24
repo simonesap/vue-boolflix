@@ -16,7 +16,7 @@
                    @click.prevent="$emit( 'search', searchText )"
                    v-on:keyup.enter="submit"
                    >
-                   Search film...
+                   Search...
             </button>
        </form>
 

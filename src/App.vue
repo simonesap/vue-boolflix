@@ -29,7 +29,7 @@ export default {
   data() {
     return {
      
-      api_key: '72f00d1d6ae3b6f495d244fb43ac83ce&query',
+      api_key: '72f00d1d6ae3b6f495d244fb43ac83ce',
       libraryMovies: [],
       librarySeries: [],
     }
@@ -70,7 +70,7 @@ export default {
     },
 
     callApiSeries( element ) {
-      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.api_key}72f00d1d6ae3b6f495d244fb43ac83ce&query=${element}&region=it-IT`)
+      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.api_key}&query=${element}&region=it-IT`)
       .then( (res) => {
         console.log(res);
         this.librarySeries = res.data.results;
