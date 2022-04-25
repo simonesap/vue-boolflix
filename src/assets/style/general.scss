@@ -80,6 +80,12 @@ body {
     height: 90vh;
 }
 
+/* Width */ 
+
+.w_100 {
+    width: 100%;
+}
+
 /* Display */
 .d_flex {
     display: flex;
@@ -130,6 +136,12 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+}
+
+.flexCenter {
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 

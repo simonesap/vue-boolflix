@@ -32,6 +32,7 @@ export default {
       api_key: '72f00d1d6ae3b6f495d244fb43ac83ce',
       libraryMovies: [],
       librarySeries: [],
+      // libraryFlags: [],
     }
   },
 
@@ -46,15 +47,13 @@ export default {
   methods: {
 
     searching( element ) {
-      if( element.includes(this.callApiMovies( element ))) {
-        
-        return this.callApiMovies( element )
+
+      this.callApiMovies( element )
       
-      } return this.callApiSeries( element )
-      // this.callApiMovies( element ) 
-      // this.callApiSeries( element )
+      this.callApiSeries( element )
+
+      // this.callApiFlags( element )
       
-      // return
     },
 
     callApiMovies( element ) {
@@ -79,7 +78,15 @@ export default {
       .catch( (error) => {
           console.log( error )
       })
-    }
+    },
+
+    // callApiFlags( ) {
+    //   axios.get('https://flagcdn.com/16x12/.png')
+    //   .then( ( res ) => {
+    //     console.log( res )
+    //     this.libraryFlags = res
+    //   })
+    // }
   },
 
 }
