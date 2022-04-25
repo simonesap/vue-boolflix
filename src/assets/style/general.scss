@@ -32,6 +32,11 @@ body {
     padding-bottom: 30px;
 }
 
+.p-y-20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .p-x-15 {
     padding-left: 15px;
     padding-right: 15px;
@@ -124,6 +129,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .flexColWrap {

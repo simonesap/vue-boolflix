@@ -8,22 +8,22 @@ Utilizzando il terminale nella cartella del progetto il comando Node:
 vue create .
 ```
 
-# 2° Importare Boostrap 5 (opzionale)
+# 2° Importare Bootstrap 5 (opzionale)
 Per importarlo dobbiamo lanciare da terminale due comandi:
 
 ```
-npm install --save boostrap
+npm install --save bootstrap
 ```
 
 ```
 npm install --save @popperjs/core
 ```
 
-Dopo aver installato le 2 dipendenze di boostrap 5 dobbiamo importare i file CSS e JS di riferimento dentro app.vue
+Dopo aver installato le 2 dipendenze di bootstrap 5 dobbiamo importare i file CSS e JS di riferimento dentro app.vue
 
 Dentro la sezione "script" scriviamo:
 ```
-import "boostrap"
+import "bootstrap"
 ```
 
 Dentro la sezione "style" scriviamo: 
