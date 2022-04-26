@@ -33,9 +33,12 @@
                     <div class="p_10"><span>Titolo: </span>{{filmCard.title}}</div>
                     <div class="p_10"><span>Titolo originale: </span>{{filmCard.original_title}}</div>
                     <div class="p_10"><span>Lingua originale: </span>{{filmCard.original_language}}</div>
-                    <div class="p_10"><span>Media dei voti: </span>{{filmCard.vote_average}}</div>
                     <div class="p_10">
-                        <i v-for="i in 5" :key="i" :class="i <= getStar(filmCard) ? 'fas fa-star' : 'far fa-star'"></i>
+                        <span>Media dei voti: </span>
+                        <i v-for="i in 5" :key="i" :class="i <= getStar(filmCard) ? 'fas fa-star' : 'far fa-star'" class="text_gold"></i>
+                    </div>
+                    <div class="p_10">
+                        
                     </div>
                     <div v-if="!filmCard.overview == '' ">
                         <div id="overview" class="p_10"><span>Overview: </span>{{filmCard.overview}}</div>
@@ -81,9 +84,12 @@
                         <div class="p_10"><span>Titolo: </span>{{seriesCard.name}}</div>
                         <div class="p_10"><span>Titolo originale: </span>{{seriesCard.original_name}}</div>
                         <div class="p_10"><span>Lingua originale: </span>{{seriesCard.original_language}}</div>
-                        <div class="p_10"><span>Media dei voti: </span>{{seriesCard.vote_average}}</div>
-                        <div class="mb-auto">
-                            <i v-for="i in 5" :key="i" :class="i <= getStar(seriesCard) ? 'fas fa-star' : 'far fa-star'"></i>
+                        <div class="p_10">
+                            <span>Media dei voti: </span>
+                            <i v-for="i in 5" :key="i" :class="i <= getStar(seriesCard) ? 'fas fa-star' : 'far fa-star'" class="text_gold"></i>
+                        </div>
+                        <div class="p_10">
+                            
                         </div>
                         <div v-if="!seriesCard.overview == '' ">
                             <div id="overview" class="p_10"><span>Overview: </span>{{seriesCard.overview}}</div>
