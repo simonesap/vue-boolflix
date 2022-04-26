@@ -2,12 +2,12 @@
     <div>
         <div v-if="!filmCard == status" id="card" class="fs_2 text_uppercase text_white">
 
-            <div v-if="active" @mouseover="active = false" >
+            <div v-show="active" @mouseover="active = false" >
                 <img @mouseover="activeHover = true"  
                     id="image" :src="`https://image.tmdb.org/t/p/original/${filmCard.poster_path}`" 
                     :alt="`Film-picture: ${filmCard.title}`">
             </div>
-            <div v-if="activeHover" id="info" class="bg-custom-black">
+            <div v-show="activeHover" id="info" class="bg-custom-black">
                 <div @mouseleave="active = true" class="">
                     <div v-if="filmCard.original_language === 'it'" class="flexCenter p_10">
                         <img src="https://flagcdn.com/28x21/it.png" alt="">
@@ -34,6 +34,9 @@
                     <div class="p_10"><span>Titolo originale: </span>{{filmCard.original_title}}</div>
                     <div class="p_10"><span>Lingua originale: </span>{{filmCard.original_language}}</div>
                     <div class="p_10"><span>Media dei voti: </span>{{filmCard.vote_average}}</div>
+                    <div class="p_10">
+                        <i v-for="i in 5" :key="i" :class="i <= getStar(filmCard) ? 'fas fa-star' : 'far fa-star'"></i>
+                    </div>
                     <div v-if="!filmCard.overview == '' ">
                         <div id="overview" class="p_10"><span>Overview: </span>{{filmCard.overview}}</div>
                     </div>
@@ -44,7 +47,7 @@
             </div>
         </div>
 
-        <div v-else >
+        <div v-else>
             <div v-if="active" @mouseover="active = false" id="info">
                 <img @mouseover="activeHover = true" id="image" 
                     :src="`https://image.tmdb.org/t/p/original${seriesCard.poster_path}`" 
@@ -78,7 +81,10 @@
                         <div class="p_10"><span>Titolo: </span>{{seriesCard.name}}</div>
                         <div class="p_10"><span>Titolo originale: </span>{{seriesCard.original_name}}</div>
                         <div class="p_10"><span>Lingua originale: </span>{{seriesCard.original_language}}</div>
-                        <div class="p_10"><span>Media dei voti: </span>{{seriesCard.vote_average}}`</div>
+                        <div class="p_10"><span>Media dei voti: </span>{{seriesCard.vote_average}}</div>
+                        <div class="mb-auto">
+                            <i v-for="i in 5" :key="i" :class="i <= getStar(seriesCard) ? 'fas fa-star' : 'far fa-star'"></i>
+                        </div>
                         <div v-if="!seriesCard.overview == '' ">
                             <div id="overview" class="p_10"><span>Overview: </span>{{seriesCard.overview}}</div>
                         </div>
@@ -126,18 +132,16 @@ export default {
     },
 
     computed: {
-        // getStar() {
-        //     this.filmCard.forEach( (element) => {
-        //         let votes = parseInt(element.vote_average) / 2;
-        //         console.log('XXXXYYYYY',votes);
-        //          return votes
-        //     }
-        //     )
-        // },
+    
     },
 
     methods: {
 
+        getStar(element) {
+            
+            return Math.ceil(element.vote_average) / 2;
+           
+        },
         // getMovieFlags() {
            
         //         this.filmCard.forEach( ( element ) => {
