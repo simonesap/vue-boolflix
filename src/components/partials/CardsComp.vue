@@ -1,103 +1,92 @@
 <template>
+    <div>
+        <div v-if="!filmCard == status" id="card" class="fs_2 text_uppercase text_white">
 
-    <div class="p-y-20">
-
-        <div v-if="!filmCard == status"
-            class="flexRowWrap container-default-2">
-            <div v-if="status">
-                
+            <div v-if="active" @mouseover="active = false" >
+                <img @mouseover="activeHover = true"  
+                    id="image" :src="`https://image.tmdb.org/t/p/original/${filmCard.poster_path}`" 
+                    :alt="`Film-picture: ${filmCard.title}`">
             </div>
-            <div v-else><h2 class="p_20">Film</h2></div>
-            
-        
-            <div
-                class="flexColWrap fs_2 text_uppercase bg-custom-black text_white"
-                v-for="(element, index) in filmCard"
-                :key="index">   
-                <div v-if="active" @mouseover="active = false">
-                    <img
-                     @mouseover="activeHover = true" @mouseleave="activeHover = false"
-                     id="image" :src="`https://image.tmdb.org/t/p/original${element.poster_path}`" 
-                     :alt="`Film-picture: ${element.title}`">
-                </div>
-                
-                <div v-if="activeHover" @mouseleave="active = true"  class="b-1-w">
-                    <div v-if="element.original_language === 'it'" class="flexCenter p_10">
+            <div v-if="activeHover" id="info" class="bg-custom-black">
+                <div @mouseleave="active = true" class="">
+                    <div v-if="filmCard.original_language === 'it'" class="flexCenter p_10">
                         <img src="https://flagcdn.com/28x21/it.png" alt="">
                     </div>
-                    <div v-else-if="element.original_language === 'en-US'" class="flexCenter p_10">
+                    <div v-else-if="filmCard.original_language === 'en-US'" class="flexCenter p_10">
                         <img src="https://flagcdn.com/28x21/us.png" alt="">
                     </div>
-                    <div v-else-if="element.original_language === 'en'" class="flexCenter p_10">
+                    <div v-else-if="filmCard.original_language === 'en'" class="flexCenter p_10">
                         <img src="https://flagcdn.com/28x21/gb.png" alt="">
                     </div> 
-                    <div v-else-if="element.original_language === 'de'" class="flexCenter p_10">
+                    <div v-else-if="filmCard.original_language === 'de'" class="flexCenter p_10">
                         <img src="https://flagcdn.com/28x21/de.png" alt="">
                     </div> 
-                    <div v-else-if="element.original_language === 'fr'" class="flexCenter p_10">
+                    <div v-else-if="filmCard.original_language === 'fr'" class="flexCenter p_10">
                         <img src="https://flagcdn.com/28x21/mf.png" alt="">
                     </div> 
-                    <div v-else-if="element.original_language === 'es'" class="flexCenter p_10">
+                    <div v-else-if="filmCard.original_language === 'es'" class="flexCenter p_10">
                         <img src="https://flagcdn.com/28x21/es.png" alt="">
                     </div> 
                     <div v-else class="flexCenter p_10">
                         <h5>Flag Undefined</h5>
                     </div> 
-                    <div class="p_10"><span>Titolo: </span>{{element.title}}</div>
-                    <div class="p_10"><span>Titolo originale: </span>{{element.original_title}}</div>
-                    <div class="p_10"><span>Lingua originale: </span>{{element.original_language}}</div>
-                    <div class="p_10"><span>Media dei voti: </span>{{element.vote_average}}</div>
-                    <div v-if="!element.overview == '' ">
-                        <div id="overview" class="p_10"><span>Overview: </span>{{element.overview}}</div>
+                    <div class="p_10"><span>Titolo: </span>{{filmCard.title}}</div>
+                    <div class="p_10"><span>Titolo originale: </span>{{filmCard.original_title}}</div>
+                    <div class="p_10"><span>Lingua originale: </span>{{filmCard.original_language}}</div>
+                    <div class="p_10"><span>Media dei voti: </span>{{filmCard.vote_average}}</div>
+                    <div v-if="!filmCard.overview == '' ">
+                        <div id="overview" class="p_10"><span>Overview: </span>{{filmCard.overview}}</div>
                     </div>
                     <div v-else>
                         <div id="overview" class="p_10"><span>Overview: </span>Undefined</div>
                     </div>
                 </div>
-                
             </div>
         </div>
 
-        <div v-else class="flexRowWrap container-default-2">
-            <h2 class="p_20">Series</h2>
-            <div
-                class="p-20 flexColWrap fs_2 text_uppercase bg-custom-black text_white"
-                v-for="(element, index) in seriesCard"
-                :key="index">   
-                
-                <img id="image" :src="`https://image.tmdb.org/t/p/original${element.poster_path}`" :alt="`Film-picture: ${element.title}`">
-                <div v-if="element.original_language === 'it'" class="flexCenter p_10">
-                    <img src="https://flagcdn.com/28x21/it.png" alt="">
+        <div v-else >
+            <div v-if="active" @mouseover="active = false" id="info">
+                <img @mouseover="activeHover = true" id="image" 
+                    :src="`https://image.tmdb.org/t/p/original${seriesCard.poster_path}`" 
+                    :alt="`Film-picture: ${seriesCard.title}`">
+            </div>
+            <div v-if="activeHover" id="info" class="bg-custom-black">
+                <div @mouseleave="active = true" class="">
+                    <div class="p-20 flexColWrap fs_2 text_uppercase bg-custom-black text_white">   
+                        
+                        <div v-if="seriesCard.original_language === 'it'" class="flexCenter p_10">
+                            <img src="https://flagcdn.com/28x21/it.png" alt="">
+                        </div>
+                        <div v-else-if="seriesCard.original_language === 'en-US'" class="flexCenter p_10">
+                            <img src="https://flagcdn.com/28x21/us.png" alt="">
+                        </div>
+                        <div v-else-if="seriesCard.original_language === 'en'" class="flexCenter p_10">
+                            <img src="https://flagcdn.com/28x21/gb.png" alt="">
+                        </div> 
+                        <div v-else-if="seriesCard.original_language === 'de'" class="flexCenter p_10">
+                            <img src="https://flagcdn.com/28x21/de.png" alt="">
+                        </div> 
+                        <div v-else-if="seriesCard.original_language === 'fr'" class="flexCenter p_10">
+                            <img src="https://flagcdn.com/28x21/mf.png" alt="">
+                        </div> 
+                        <div v-else-if="seriesCard.original_language === 'es'" class="flexCenter p_10">
+                            <img src="https://flagcdn.com/28x21/es.png" alt="">
+                        </div> 
+                        <div v-else class="flexCenter p_10">
+                            <h5>Flag Undefined</h5>
+                        </div> 
+                        <div class="p_10"><span>Titolo: </span>{{seriesCard.name}}</div>
+                        <div class="p_10"><span>Titolo originale: </span>{{seriesCard.original_name}}</div>
+                        <div class="p_10"><span>Lingua originale: </span>{{seriesCard.original_language}}</div>
+                        <div class="p_10"><span>Media dei voti: </span>{{seriesCard.vote_average}}`</div>
+                        <div v-if="!seriesCard.overview == '' ">
+                            <div id="overview" class="p_10"><span>Overview: </span>{{seriesCard.overview}}</div>
+                        </div>
+                        <div v-else>
+                            <div id="overview" class="p_10"><span>Overview: </span>Undefined</div>
+                        </div>
+                    </div>
                 </div>
-                <div v-else-if="element.original_language === 'en-US'" class="flexCenter p_10">
-                    <img src="https://flagcdn.com/28x21/us.png" alt="">
-                </div>
-                <div v-else-if="element.original_language === 'en'" class="flexCenter p_10">
-                    <img src="https://flagcdn.com/28x21/gb.png" alt="">
-                </div> 
-                <div v-else-if="element.original_language === 'de'" class="flexCenter p_10">
-                    <img src="https://flagcdn.com/28x21/de.png" alt="">
-                </div> 
-                <div v-else-if="element.original_language === 'fr'" class="flexCenter p_10">
-                    <img src="https://flagcdn.com/28x21/mf.png" alt="">
-                </div> 
-                <div v-else-if="element.original_language === 'es'" class="flexCenter p_10">
-                    <img src="https://flagcdn.com/28x21/es.png" alt="">
-                </div> 
-                <div v-else class="flexCenter p_10">
-                    <h5>Flag Undefined</h5>
-                </div> 
-                <div class="p_10"><span>Titolo: </span>{{element.name}}</div>
-                <div class="p_10"><span>Titolo originale: </span>{{element.original_name}}</div>
-                <div class="p_10"><span>Lingua originale: </span>{{element.original_language}}</div>
-                <div class="p_10"><span>Media dei voti: </span>{{element.vote_average}}</div>
-                <div v-if="!element.overview == '' ">
-                    <div id="overview" class="p_10"><span>Overview: </span>{{element.overview}}</div>
-                </div>
-                <div v-else>
-                    <div id="overview" class="p_10"><span>Overview: </span>Undefined</div>
-                </div>
-                
             </div>
         </div>
     </div>
@@ -116,8 +105,8 @@ export default {
   },
 
   props: {
-      filmCard: Array,
-      seriesCard: Array,
+      filmCard: Object,
+      seriesCard: Object,
   },
 
   data() {
@@ -125,39 +114,47 @@ export default {
             active: true,
             activeHover: false,
             status: false,
-            flags: [
-                {
-                    it: 'https://flagcdn.com/16x12/it.png',
-                    us: 'https://flagcdn.com/16x12/us.png',
-                    uk: 'https://flagcdn.com/16x12/gb.png',
-                }
-            ],
+            counter: 0,
+            // flags: [
+            //     {
+            //         it: 'https://flagcdn.com/16x12/it.png',
+            //         us: 'https://flagcdn.com/16x12/us.png',
+            //         uk: 'https://flagcdn.com/16x12/gb.png',
+            //     }
+            // ],
         }
     },
 
     computed: {
-        
+        // getStar() {
+        //     this.filmCard.forEach( (element) => {
+        //         let votes = parseInt(element.vote_average) / 2;
+        //         console.log('XXXXYYYYY',votes);
+        //          return votes
+        //     }
+        //     )
+        // },
     },
 
     methods: {
 
-        getMovieFlags() {
+        // getMovieFlags() {
            
-                this.filmCard.forEach( ( element ) => {
-                    if ( element.original_language === 'it' ) {
-                        return this.flags.it
-                    }
-                    else if ( element.original_language === 'us' ) {
-                        return this.flags.us
-                    }
-                    else if ( element.original_language === 'uk' ) {
-                        return this.flags.uk
-                     }
-                     else {
-                        return 'Flag Undefind'
-                    }
-                }) 
-            },
+        //         this.filmCard.forEach( ( element ) => {
+        //             if ( element.original_language === 'it' ) {
+        //                 return this.flags.it
+        //             }
+        //             else if ( element.original_language === 'us' ) {
+        //                 return this.flags.us
+        //             }
+        //             else if ( element.original_language === 'uk' ) {
+        //                 return this.flags.uk
+        //              }
+        //              else {
+        //                 return 'Flag Undefind'
+        //             }
+        //         }) 
+        //     },
     }
 }
 </script>
@@ -175,7 +172,18 @@ export default {
     }
 
     #overview {
+        height: 150px;
+        overflow: auto;
+    }
+
+    #card {
         width: 350px;
+        height: 400px;
+    }
+
+    #info {
+        width: 350px;
+        height: 400px;
     }
 
 </style>

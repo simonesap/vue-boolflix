@@ -1,11 +1,26 @@
 <template>
 
   <div>
-    
-    <CardsComp
-        :seriesCard="seriesCall"
-    />
 
+    <div>
+
+      <div v-if="seriesCall == status">
+        
+      </div>
+      <div v-else>
+        <h2 class="p_20 text_white">Series</h2>
+      </div>
+
+    </div>
+
+    <div class="flexRowWrap">
+      <CardsComp
+        v-for="(element, index) in seriesCall"
+        :key="index"
+        :seriesCard="element"
+    />
+    </div>
+  
   </div>
 
 </template>
@@ -27,7 +42,7 @@ export default {
 
   data() {
         return {
-            
+            status: false,
         }
     },
 }

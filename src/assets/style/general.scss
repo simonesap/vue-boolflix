@@ -5,6 +5,8 @@ body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    // background: linear-gradient($gray-medium, black;
+
 }
 
 /* Container */
@@ -212,4 +214,12 @@ body {
 
 .text_capital {
     text-transform: capitalize;
+}
+
+.text_decoration {
+    text-decoration: none;
+}
+
+.listTypeNone {
+    list-style-type: none;
 }

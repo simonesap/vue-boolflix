@@ -1,6 +1,7 @@
 <template>
   <div>
 
+    <h2 class="text_uppercase text_white container-default-2 p_10">originali boolflix</h2>
       <FilmsList
         :filmCall="libraryCallMovies"
       />

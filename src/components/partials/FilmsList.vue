@@ -1,11 +1,24 @@
 <template>
 
   <div>
-    
-    <CardsComp
-        :filmCard="filmCall"
-    />
 
+    <div>
+      <div v-if="filmCall == status">
+        
+      </div>
+      <div v-else>
+        <h2 class="p_20 text_white">Film</h2>
+      </div>
+    </div>
+    <div class="flexRowWrap">
+      <CardsComp
+      class="" 
+      v-for="(element, index) in filmCall"
+      :key="index"   
+      :filmCard="element"
+      />
+    </div>
+  
   </div>
 
 </template>
@@ -27,7 +40,7 @@ export default {
 
   data() {
         return {
-            
+            status: false,
         }
     },
 }

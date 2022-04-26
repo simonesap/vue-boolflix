@@ -4,8 +4,17 @@
     
     <div class="container-default-2 flexBetween">
 
-        <div class="">
+        <div class="d_flex align_center">
           <h2 class="text_uppercase  text_red fs_8">boolflix</h2> 
+          <div class="text_white p_20 ">
+            <a class="text_white text_decoration p_10" href="#">Home</a>
+            <a class="text_white text_decoration p_10" href="#">Serie Tv</a>
+            <a class="text_white text_decoration p_10" href="#">Film</a>
+            <a class="text_white text_decoration p_10" href="#">Originali</a>
+            <a class="text_white text_decoration p_10" href="#">Aggiunti di recente</a>
+            <a class="text_white text_decoration p_10" href="#">La mia lista</a>
+          </div>
+          
       </div>
 
       <form action="" class="p_10">
