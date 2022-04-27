@@ -2,7 +2,7 @@
 
   <div>
 
-    <div>
+    <div class="text_center">
 
       <div v-if="seriesCall == status">
         
@@ -17,8 +17,7 @@
       <CardsComp
         v-for="(element, index) in seriesCall"
         :key="index"
-        :seriesCard="element"
-    />
+        :seriesCard="element" />
     </div>
   
   </div>

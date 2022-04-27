@@ -57,7 +57,7 @@ export default {
     },
 
     callApiMovies( element ) {
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.api_key}&query=${element}&region=it-IT`)
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.api_key}&query=${element}&year&adult&region=it-IT`)
       .then( (res) => {
         console.log(res);
         this.libraryMovies = res.data.results;
@@ -69,7 +69,7 @@ export default {
     },
 
     callApiSeries( element ) {
-      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.api_key}&query=${element}&region=it-IT`)
+      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.api_key}&query=${element}&first_air_date&region=it-IT`)
       .then( (res) => {
         console.log(res);
         this.librarySeries = res.data.results;

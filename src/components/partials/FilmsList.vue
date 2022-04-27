@@ -2,7 +2,7 @@
 
   <div>
 
-    <div>
+    <div class="text_center">
       <div v-if="filmCall == status">
         
       </div>
