@@ -17,7 +17,8 @@
       <CardsComp
         v-for="(element, index) in seriesCall"
         :key="index"
-        :seriesCard="element" />
+        :seriesCard="element" 
+        :personCard="personCall" />
     </div>
   
   </div>
@@ -37,6 +38,7 @@ export default {
 
   props: {
       seriesCall: Array,
+      personCall: Array,
   },
 
   data() {

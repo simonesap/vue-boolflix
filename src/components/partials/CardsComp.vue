@@ -36,6 +36,7 @@
                     <div class="p_10"><span>Lingua originale: </span>{{filmCard.original_language}}</div>
                     <div class="p_10"><span>Data di uscita: </span>{{filmCard.release_date}}</div>
                     <div class="p_10"><span>Adulti: </span>{{filmCard.adult}}</div>
+                    <div class="p_10" ><span>Attori: </span>{{nameList}}</div>
                     <div class="p_10">
                         <span>Media dei voti: </span>
                         <i v-for="i in 5" :key="i" :class="i <= getStar(filmCard) ? 'fas fa-star' : 'far fa-star'" class="text_gold"></i>
@@ -90,6 +91,7 @@
                     <div class="p_10"><span>Titolo originale: </span>{{seriesCard.original_name}}</div>
                     <div class="p_10"><span>Lingua originale: </span>{{seriesCard.original_language}}</div>
                     <div class="p_10"><span>Data di uscita: </span>{{seriesCard.first_air_date}}</div>
+                    <!-- <div class="p_10" v-for="(element,index) in personCard" :key="index"><span>Attori: </span>{{element.name}}</div> -->
                     <div class="p_10">
                         <span>Media dei voti: </span>
                         <i v-for="i in 5" :key="i" :class="i <= getStar(seriesCard) ? 'fas fa-star' : 'far fa-star'" class="text_gold"></i>
@@ -124,6 +126,7 @@ export default {
   props: {
       filmCard: Object,
       seriesCard: Object,
+      personCard: Array,
   },
 
   data() {
@@ -131,6 +134,9 @@ export default {
             active: true,
             activeHover: false,
             status: false,
+            filmsTitles: [],
+            actorsMovies: [],
+            nameList: [],
         }
     },
 
@@ -145,6 +151,30 @@ export default {
             return Math.ceil(element.vote_average) / 2;
            
         },
+
+        moviesTitles() {
+        this.filmCard.forEach( (el,i) => {
+        return this.filmsTitles = el[i].title
+            
+        }) 
+            console.log('Films title',this.filmsTitles)
+        },
+        
+        actorsFilms() {
+            this.personCard.forEach( (el,i) => {
+                return this.actorsMovies = el[i].known_for[i].title
+                
+        }) 
+            console.log('Actors Films',this.actorsMovies)
+        },
+
+        compareTitle() {
+            if(this.filmsTitles == this.actorsMovies) {
+                return this.personCard.filter( (res) => {
+                    return this.nameList = res.name
+                })
+            }
+        }
     }
 }
 </script>

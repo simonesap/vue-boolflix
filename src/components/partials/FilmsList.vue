@@ -14,8 +14,9 @@
       <CardsComp
       class="" 
       v-for="(element, index) in filmCall"
-      :key="index"   
+      :key="index" 
       :filmCard="element"
+      :personCard="personCall"
       />
     </div>
   
@@ -36,6 +37,7 @@ export default {
 
   props: {
       filmCall: Array,
+      personCall: Array,
   },
 
   data() {
